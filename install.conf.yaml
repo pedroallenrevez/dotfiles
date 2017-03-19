@@ -1,0 +1,20 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.dotfiles: ''
+    ~/.config/termite/config: 
+      create: true
+      path: termite/config
+    ~/.vim: vim
+    ~/.vimrc: vimrc
+    ~/.config/fish/config.fish: fish/config.fish
+    ~/.config/i3/config: 
+      create: true
+      path: i3/config
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
