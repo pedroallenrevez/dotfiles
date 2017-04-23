@@ -25,26 +25,12 @@ font pango:Futura T OT Book 10
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec termite
-
-# kill focused window
+# Random
+bindsym $mod+Return exec st
 bindsym $mod+Shift+q kill
-bindsym $mod+Shift+d exec --no-startup-id dmenu
-
-# start ROFI (a program launcher)
 bindsym $mod+d exec rofi -show run 
-bindsym $mod+q exec terminix --quake
-bindsym $mod+n exec wal -i ~/Pictures/material
-# do lock
 bindsym mod4+l exec suspend.sh
-bindsym mod4+r exec xfce4-popup-whiskermenu
-#win+e floating file manager
 bindsym mod4+e exec nautilus 
-#oThere also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus left
@@ -145,17 +131,14 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 #	       MEDIA KEYS
 #
 ##################################
-#bindsym XF86AudioRaiseVolume exec vol.sh volUp
-#bindsym XF86AudioLowerVolume exec vol.sh volDown
-#bindsym XF86AudioMute exec vol.sh volMute
-#bindsym XF86AudioPause exec lempc pause
-#bindsym XF86AudioPlay exec lempc pause
-#bindsym XF86AudioNext exec lempc next
-#bindsym XF86AudioPrev exec lempc prev
-#
-#
-#bindsym XF86MonBrightnessUp exec xbacklight -inc 5
-#bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+#PulseAudio
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 ##################################
 #
 #	      WINDOW CONFIG
@@ -181,8 +164,8 @@ for_window [class="Arista-gtk"] floating enable border pixel 2
 hide_edge_borders both
 
 #Window Border
-new_window pixel 0
-new_float pixel 0
+new_window pixel 1
+new_float pixel 1
 
 #Window Gaps
 gaps inner 7
@@ -248,6 +231,7 @@ mode "resize" {
 #exec_always --no-startup-id wal -i ~/Pictures/firewatch.jpg
 exec redshift
 exec compton -b
-exec guake
-exec_always --no-startup-id wal -i Pictures/material/5\ -\ 2.png 
+exec_always --no-startup-id wal -i Pictures/space/destruction.jpg
+exec polybar bottom
+exec_always --no-startup-id xset r rate 250 60
 
