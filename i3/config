@@ -231,7 +231,12 @@ mode "resize" {
 #exec_always --no-startup-id wal -i ~/Pictures/firewatch.jpg
 exec redshift
 exec compton -b
-exec_always --no-startup-id wal -i Pictures/space/destruction.jpg
-exec polybar bottom
-exec_always --no-startup-id xset r rate 250 60
+exec nm-applet
+exec xset r rate 250 60
+exec pnmixer
+exec dunst
+exec polylaunch
+
+#restarts
+exec_always --no-startup-id wal -i Media/Pictures/fantasy/nordrassil.jpg
 
